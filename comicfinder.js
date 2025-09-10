@@ -1,7 +1,4 @@
-const apiKeyy = "AIzaSyB6LqE7oMTKUIjCKWWFU6gFxHuX2iRBeRo";
 
-const useProxy = true;
-const proxy = "https://cors-anywhere.herokuapp.com";
 
 function getLocation() {
     const cache = JSON.parse(localStorage.getItem('cachedLocation') || '{}');
@@ -18,8 +15,7 @@ function getLocation() {
     }
 }
 async function useLocation(lat, lng) {
-    const endpoint = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${lng}&radius=1500&type=store&keyword=comic%20book%20shop&key=${apiKeyy}`;
-    const url = useProxy ? proxy + endpoint : endpoint;
+    const endpoint = `/api/find-stores?lat=${lat}&lng=${lng}`;
     try {
         const response = await fetch(url);
         const data = await response.json();
