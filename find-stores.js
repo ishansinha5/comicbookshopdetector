@@ -6,8 +6,7 @@ export default async function handler(req, res) {
     if (!lat || !lng) {
         return res.status(400).json({ error: 'Latitude and longitude are required.' });
     }
-
-    
+    const apiKey = process.env.API_KEY;
     const endpoint = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${lng}&radius=1500&type=store&keyword=comic%20book%20shop&key=${apiKey}`;
 
     try {
