@@ -1,5 +1,3 @@
-
-
 function getLocation() {
     const cache = JSON.parse(localStorage.getItem('cachedLocation') || '{}');
     const now = Date.now();
@@ -43,7 +41,7 @@ function displayCards(stores) {
         card.className = 'location-card';
 
         const imgUrl = store.photos?.[0]?.photo_reference
-            ? `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${store.photos[0].photo_reference}&key=${apiKeyy}`
+            ? `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${store.photos[0].photo_reference}&key=${apiKey}`
             : 'https://via.placeholder.com/250x150?text=No+Image';
 
         const comicBookShopData = {
@@ -57,7 +55,7 @@ function displayCards(stores) {
             <img src="${imgUrl}" alt="${store.name}" />
             <h3>${store.name}</h3>
             <p>⭐️ Rating: ${store.rating || 'N/A'}</p>
-            <p><small>Swipe right to save 💖</small></p>
+            <p><small>Swipe right to save</small></p>
         `;
 
         wrapper.appendChild(card);
