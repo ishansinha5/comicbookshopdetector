@@ -15,7 +15,7 @@ function getLocation() {
 async function useLocation(lat, lng) {
     const endpoint = `/api/find-stores?lat=${lat}&lng=${lng}`;
     try {
-        const response = await fetch(url);
+        const response = await fetch(endpoint);
         const data = await response.json();
         if (data.results) {
             displayCards(data.results);
@@ -41,7 +41,7 @@ function displayCards(stores) {
         card.className = 'location-card';
 
         const imgUrl = store.photos?.[0]?.photo_reference
-            ? `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${store.photos[0].photo_reference}&key=${apiKey}`
+            ? `/api/get-photo?photoreference=${store.photos[0].photo_reference}` 
             : 'https://via.placeholder.com/250x150?text=No+Image';
 
         const comicBookShopData = {
