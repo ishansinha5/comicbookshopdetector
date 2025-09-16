@@ -1,9 +1,8 @@
-// File: api/find-stores.js
 
 import fetch from 'node-fetch';
 
 export default async function handler(req, res) {
-    const { lat, lng, radius } = req.body; 
+    const { lat, lng, radius } = req.query; 
 
     if (!lat || !lng) {
         return res.status(400).json({ error: 'Latitude and longitude are required.' });
@@ -16,8 +15,8 @@ export default async function handler(req, res) {
         includedTypes: ['comic_book_store'], 
         locationRestriction: {
             circle: {
-                center: { latitude: lat, longitude: lng },
-                radius: radius || 1500 
+                center: { latitude: parseFloat(lat), longitude: parseFloat(lng) },
+                radius: parseFloat(radius) || 1500 
             }
         },
         languageCode: 'en',

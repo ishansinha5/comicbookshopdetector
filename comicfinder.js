@@ -27,7 +27,7 @@ function getLocation() {
     // Optional: Add an alert to confirm you're using the test data
     alert("Using test location. Please enable location services or use a supported device to test live.");
 }
-
+/*
 async function useLocation(lat, lng) {
     const endpoint = `/api/find-stores`;
     const radius = 10000; 
@@ -52,7 +52,33 @@ async function useLocation(lat, lng) {
         alert("Error fetching comic book shops.");
     }
 }
+*/
+// File: comicfinder.js
 
+async function useLocation(lat, lng) {
+    const radius = 10000; 
+    const params = new URLSearchParams({
+        lat: lat,
+        lng: lng,
+        radius: radius
+    });
+
+    const endpoint = `/api/find-stores?${params.toString()}`;
+
+    try {
+        const response = await fetch(endpoint);
+        const data = await response.json();
+        
+        if (data.places && data.places.length > 0) {
+            displayCards(data.places);
+        } else {
+            alert("No comic book shops found.");
+        }
+    } catch (e) {
+        console.error("Error fetching comic book shops:", e);
+        alert("Error fetching comic book shops.");
+    }
+}
 function displayCards(stores) {
     const container = document.querySelector('.cards');
     container.innerHTML = '';
