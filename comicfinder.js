@@ -12,18 +12,29 @@ function getLocation() {
         }, () => alert("Location access denied or unavailable."));
     }
 }
+
+
 async function useLocation(lat, lng) {
-    const endpoint = `/api/find-stores?lat=${lat}&lng=${lng}`;
+    const endpoint = `/api/find-stores`;
+    const radius = 10000; 
+
     try {
-        const response = await fetch(endpoint);
+        const response = await fetch(endpoint, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ lat, lng, radius }),
+        });
         const data = await response.json();
-        if (data.results) {
-            displayCards(data.results);
+        
+        if (data.places && data.places.length > 0) {
+            displayCards(data.places);
         } else {
             alert("No comic book shops found.");
         }
     } catch (e) {
-        console.error("Error fetching Places API:", e);
+        console.error("Error fetching comic book shops:", e);
         alert("Error fetching comic book shops.");
     }
 }
@@ -40,22 +51,21 @@ function displayCards(stores) {
         const card = document.createElement('div');
         card.className = 'location-card';
 
-        const imgUrl = store.photos?.[0]?.photo_reference
-            ? `/api/get-photo?photoreference=${store.photos[0].photo_reference}` 
-            : 'https://via.placeholder.com/250x150?text=No+Image';
+        const photoName = store.photos?.[0]?.name;
+        const imgUrl = photoName ? `/api/get-photo?photoreference=${photoName}` : 'https://via.placeholder.com/250x150?text=No+Image';
 
         const comicBookShopData = {
-            name: store.name,
-            place_id: store.place_id,
+            name: store.displayName.text, 
+            place_id: store.id, 
             photo: imgUrl,
             rating: store.rating || 'N/A'
         };
 
         card.innerHTML = `
-            <img src="${imgUrl}" alt="${store.name}" />
-            <h3>${store.name}</h3>
-            <p>⭐️ Rating: ${store.rating || 'N/A'}</p>
-            <p><small>Swipe right to save</small></p>
+            <img src="${imgUrl}" alt="${comicBookShopData.name}" />
+            <h3>${comicBookShopData.name}</h3>
+            <p>⭐️ Rating: ${comicBookShopData.rating}</p>
+            <p><small>Swipe right to save 💖</small></p>
         `;
 
         wrapper.appendChild(card);
@@ -76,7 +86,6 @@ function displayCards(stores) {
         });
     });
 }
-
 function saveCB(cbJSON) {
     const cbshop = JSON.parse(cbJSON);
     let saved = JSON.parse(localStorage.getItem('savedComicBookShops') || '[]');
