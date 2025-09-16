@@ -1,3 +1,4 @@
+/*
 function getLocation() {
     const cache = JSON.parse(localStorage.getItem('cachedLocation') || '{}');
     const now = Date.now();
@@ -12,7 +13,20 @@ function getLocation() {
         }, () => alert("Location access denied or unavailable."));
     }
 }
+*/
+// File: comicfinder.js
 
+function getLocation() {
+    // This is a test location for Washington, D.C.
+    const lat = 38.9072;
+    const lng = -77.0369;
+
+    // Immediately call useLocation with the test coordinates
+    useLocation(lat, lng);
+
+    // Optional: Add an alert to confirm you're using the test data
+    alert("Using test location. Please enable location services or use a supported device to test live.");
+}
 
 async function useLocation(lat, lng) {
     const endpoint = `/api/find-stores`;
