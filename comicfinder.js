@@ -194,7 +194,7 @@ function displayFinalCard(message) {
     card.style.zIndex = 200; 
     
     card.innerHTML = `
-        <img src="confusedspidey.jpg" alt="End of List" />
+        <img src="detectivechimp.jpg" alt="End of List" />
         <h3>${message}</h3>
         <p>Click here to go back to the beginning.</p>
     `;
