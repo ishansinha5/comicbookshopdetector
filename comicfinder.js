@@ -1,4 +1,3 @@
-
 let storesData = [];
 let currentIndex = 0;
 
@@ -66,6 +65,9 @@ function displayCards(stores) {
     const container = document.querySelector('.cards');
     container.innerHTML = '';
     
+    // **FIX** Reset the index here every time cards are displayed
+    currentIndex = 0;
+
     if (!stores || stores.length === 0) {
         displayFinalCard("No comic book shops found in this area 😢");
         return;
@@ -192,7 +194,7 @@ function displayFinalCard(message) {
     card.style.zIndex = 200; 
     
     card.innerHTML = `
-        <img src="https://via.placeholder.com/250x150?text=The+End" alt="End of List" />
+        <img src="confusedspidey.jpg" alt="End of List" />
         <h3>${message}</h3>
         <p>Click here to go back to the beginning.</p>
     `;
