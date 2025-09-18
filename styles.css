@@ -28,11 +28,10 @@ h1, h3 {
     color: #ffeb3b;
 }
 
-/* Updated button styles for a consistent look on the finder page */
 button {
     font-family: "Savate", sans-serif;
     font-size: 20px;
-    background-color: rgb(0, 162, 255); /* Recommender page color */
+    background-color: rgb(0, 162, 255);
     color: white;
     border-radius: 10vw;
     padding: 1vw;
@@ -63,6 +62,16 @@ button:hover {
     padding: 2rem;
     position: relative; 
     z-index: 1;
+}
+
+/* This is the new style for the text outline */
+.homepage-content h1,
+.homepage-content p,
+.homepage-button {
+    text-shadow: -1px -1px 0 #000,
+                 1px -1px 0 #000,
+                 -1px 1px 0 #000,
+                 1px 1px 0 #000;
 }
 
 .button-container {
@@ -127,37 +136,37 @@ button:hover {
 @media (max-width: 768px) {
     /* General Mobile Styles */
     h1 {
-        font-size: 2.5rem;
+        font-size: 3rem; /* Increased size */
     }
     p {
-        font-size: 1rem;
+        font-size: 1.2rem; /* Increased size */
     }
     
     /* Homepage Button Styles */
     .button-container {
         flex-direction: column;
-        gap: 15px;
+        gap: 20px; /* Increased gap */
         margin-top: 50px;
     }
     .homepage-button {
         width: 80%;
-        font-size: 20px;
-        padding: 10px 20px;
+        font-size: 24px; /* Increased font size */
+        padding: 15px 30px; /* Increased padding */
         margin: 0 auto;
     }
     
-    /* Finder Page Buttons - Fix for sizing and stacking on mobile */
+    /* Finder Page Buttons */
     .finder-page div:first-of-type {
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: 15px; /* Increased gap */
         align-items: center;
     }
 
     .finder-page div:first-of-type button {
-        width: 80%;
-        padding: 10px 0;
-        font-size: 18px;
+        width: 80%; /* Increased width */
+        padding: 15px 0; /* Increased padding */
+        font-size: 20px; /* Increased font size */
     }
     
     /* Nav Bar on Finder/Recommender Pages */
