@@ -28,10 +28,11 @@ h1, h3 {
     color: #ffeb3b;
 }
 
+/* Updated button styles for a consistent look on the finder page */
 button {
     font-family: "Savate", sans-serif;
     font-size: 20px;
-    background-color: rgb(0, 102, 255);
+    background-color: rgb(0, 162, 255); /* Recommender page color */
     color: white;
     border-radius: 10vw;
     padding: 1vw;
@@ -117,7 +118,7 @@ button:hover {
     object-fit: cover;
 }
 
-.recommender-page {
+.recommender-page, .finder-page {
     background-color: rgb(0, 162, 255); 
 }
 
@@ -145,11 +146,18 @@ button:hover {
         margin: 0 auto;
     }
     
-    /* Finder Page Buttons */
-    .finder-page button {
-        width: 45%; /* Make buttons smaller to fit two per row */
-        font-size: 16px;
-        padding: 8px;
+    /* Finder Page Buttons - Fix for sizing and stacking on mobile */
+    .finder-page div:first-of-type {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .finder-page div:first-of-type button {
+        width: 80%;
+        padding: 10px 0;
+        font-size: 18px;
     }
     
     /* Nav Bar on Finder/Recommender Pages */
