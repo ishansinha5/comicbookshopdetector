@@ -48,3 +48,15 @@ border: none;
 button:hover {
     background: #555;
 }
+
+.nav-bar {
+    flex-direction: column;
+}
+.nav-bar a {
+    padding: 0.5rem 0;
+}
+@media (min-width: 768px) {
+    .nav-bar {
+        flex-direction: row;
+    }
+}

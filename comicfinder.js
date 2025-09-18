@@ -157,11 +157,25 @@ function showSaved() {
                 <img src="${shop.photo}" alt="${shop.name}" />
                 <h3>${shop.name}</h3>
                 <p>⭐️ Rating: ${shop.rating}</p>
+                <button onclick="removeCB('${shop.place_id}')">Remove</button>
             `;
             container.appendChild(card);
         });
     } catch (e) {
         console.error("Error loading saved shops:", e);
         container.innerHTML = '<p>Error loading saved shops 😢</p>';
+    }
+
+    function removeCB(placeId) {
+        let saved = JSON.parse(localStorage.getItem('savedComicBookShops') || '[]');
+
+        const shopIndex = saved.findIndex(shop => shop.place_id === placeId);
+
+        if (shopIndex !== -1) {
+            saved.splice(shopIndex, 1);
+            localStorage.setItem('savedComicBookShops', JSON.stringify(saved));
+            showSaved(); 
+            alert("Comic book shop removed!");
+        }
     }
 }
