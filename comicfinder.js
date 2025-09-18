@@ -87,13 +87,15 @@ function displayCards(stores) {
             name: store.displayName?.text || store.name || 'Unknown Shop', 
             place_id: store.id, 
             photo: imgUrl,
-            rating: store.rating || 'N/A'
+            rating: store.rating || 'N/A',
+            website: store.websiteUri || ''
         };
 
         card.innerHTML = `
             <img src="${imgUrl}" alt="${comicBookShopData.name}" />
             <h3>${comicBookShopData.name}</h3>
             <p>⭐️ Rating: ${comicBookShopData.rating}</p>
+            ${comicBookShopData.website ? `<p><a href="${comicBookShopData.website}" target="_blank">Visit Website</a></p>` : ''}
             <p><small>Swipe right to save 💖</small></p>
         `;
 
@@ -165,17 +167,17 @@ function showSaved() {
         console.error("Error loading saved shops:", e);
         container.innerHTML = '<p>Error loading saved shops 😢</p>';
     }
+}
 
-    function removeCB(placeId) {
-        let saved = JSON.parse(localStorage.getItem('savedComicBookShops') || '[]');
+function removeCB(placeId) {
+    let saved = JSON.parse(localStorage.getItem('savedComicBookShops') || '[]');
 
-        const shopIndex = saved.findIndex(shop => shop.place_id === placeId);
+    const shopIndex = saved.findIndex(shop => shop.place_id === placeId);
 
-        if (shopIndex !== -1) {
-            saved.splice(shopIndex, 1);
-            localStorage.setItem('savedComicBookShops', JSON.stringify(saved));
-            showSaved(); 
-            alert("Comic book shop removed!");
-        }
+    if (shopIndex !== -1) {
+        saved.splice(shopIndex, 1);
+        localStorage.setItem('savedComicBookShops', JSON.stringify(saved));
+        showSaved(); 
+        alert("Comic book shop removed!");
     }
 }
