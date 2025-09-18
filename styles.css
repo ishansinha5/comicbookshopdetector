@@ -44,7 +44,7 @@ button:hover {
 }
 
 .homepage {
-    background-image: url('images/wallpaper_for_home.jpg');
+    background-image: url('wallpaper_for_home.jpg');
     background-size: cover;
     background-position: center;
     filter: blur(5px);
@@ -108,6 +108,9 @@ button:hover {
     }
 }
 
+.finder-page {
+    background-color: rgb(0, 162, 255);
+}
 .recommender-page {
     background-color: rgb(0, 162, 255); 
 }
