@@ -4,11 +4,11 @@ An enterprise-grade, compute-optimized system for comic book shop localization, 
 
 This project is currently undergoing a complete architectural refactoring from a serverless monolith into a high-performance, containerized microservices ecosystem optimized for "Green AI" and minimal GPU footprint.
 
-## 🚀 Current Status: Phase 1 (Deployed)
+## Current Status: Phase 1 (Deployed)
 - **Frontend Client:** The lightweight, responsive web client is currently live and deployed via Vercel. 
 - **Legacy Systems Deprecated:** Initial integrations with Google Places API and monolithic ML scripts have been phased out to make way for the Phase 2 backend orchestration.
 
-## 🏗️ Target Architecture: Phase 2 (Active Development)
+## Target Architecture: Phase 2 (Active Development)
 The system is built as a distributed microservices architecture, orchestrated via **Docker Compose** within a WSL environment. The technology stack is strictly purpose-driven, with a focus on compute optimization and spatial data processing.
 
 ### Zone 1: The Client Layer (Frontend)
@@ -27,8 +27,8 @@ The system is built as a distributed microservices architecture, orchestrated vi
 * **Tech:** Python (FastAPI), Jupyter Notebooks, CLIP (or equivalent vision model).
 * **Role:** Triggered *only* when the C++ layer encounters a novel, unhashed image. Jupyter serves as the prototyping environment, while FastAPI serves the production weights via a clean REST API endpoint. 
 
-## 🔌 Future Roadmap
+## Future Roadmap
 - **League of Comic Geeks Integration:** Modularize the Vision Identifier REST API and Release Calendar event bus for seamless integration with the League of Comic Geeks platform.
 
-## ⚙️ Local Development
+## Local Development
 *Instructions for WSL / Docker Compose bootstrapping will be added as Phase 2 development continues.*
