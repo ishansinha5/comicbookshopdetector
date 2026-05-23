@@ -43,7 +43,8 @@ button:hover {
 }
 
 .homepage {
-    background-image: url('wallpaper_for_home.jpg');
+    /* Updated to point inside the new images directory */
+    background-image: url('images/wallpaper_for_home.jpg');
     background-size: cover;
     background-position: center;
     filter: blur(5px);
@@ -180,11 +181,8 @@ button:hover {
 
 .architectural-detail {
     color: black;
-    text-shadow: 
-        -1px -1px 0 #fff,  
-         1px -1px 0 #fff,
-        -1px  1px 0 #fff,
-         1px  1px 0 #fff;
+    -webkit-text-stroke: 0.5px white;
+    text-shadow: 0px 0px 4px rgba(255, 255, 255, 0.8);
     font-size: 1.2rem;
     line-height: 1.5;
     margin: 20px auto;
