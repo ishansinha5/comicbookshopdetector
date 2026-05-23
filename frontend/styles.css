@@ -346,12 +346,10 @@ button:hover {
 .architectural-detail {
     color: black;
     font-weight: bold;
-    /* Crisp 1px white outline */
-    text-shadow: 
-        -1px -1px 0 #fff,  
-         1px -1px 0 #fff,
-        -1px  1px 0 #fff,
-         1px  1px 0 #fff;
+    /* Sub-pixel stroke for the thinnest possible crisp outline */
+    -webkit-text-stroke: 0.3px white;
+    /* Removed the bulky 1px shadow */
+    text-shadow: none; 
     font-size: 1.25rem;
     line-height: 1.6;
     margin: 20px auto;
