@@ -17,7 +17,10 @@
     <a href="about.html">About</a>
   </div>
   <h1>Upcoming Release Dates</h1>
-  <p>Release Date page is currently down due to API changes.</p>
-  <p><strong>How it works:</strong> I scraped the internet for release dates, and then, using the Google Calendar API, update the User's calendar when called in order to provide them with updated release dates.</p>
+  <p class="offline-warning">Release Date page is currently down due to API architecture changes.</p>
+  
+  <p class="architectural-detail">
+    <strong>How it works (Phase 2):</strong> The goal here is to completely automate the weekly Wednesday pull list. The legacy version relied on simple web scraping, but I'm currently re-architecting it to be a more resilient asynchronous event bus. The backend uses Java to pull structured release data (eventually hooking into the League of Comic Geeks API), formats it, and pushes those dates directly into the user's Google Calendar. I'm focusing heavily on fault tolerance right now so that a single misaligned JSON response doesn't crash the entire scheduling pipeline.
+  </p>
 </body>
 </html>

@@ -177,3 +177,25 @@ button:hover {
         margin-bottom: 15px;
     }
 }
+
+.architectural-detail {
+    color: black;
+    text-shadow: 
+        -1px -1px 0 #fff,  
+         1px -1px 0 #fff,
+        -1px  1px 0 #fff,
+         1px  1px 0 #fff;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    margin: 20px auto;
+    max-width: 800px;
+    padding: 0 20px;
+    text-align: justify;
+}
+
+.offline-warning {
+    font-family: "Bangers", sans-serif;
+    color: #ff3333;
+    font-size: 1.5rem;
+    text-shadow: 1px 1px 0 #fff;
+}

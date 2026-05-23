@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8/hammer.min.js"></script>
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Comic Shop Curator</title>
@@ -19,11 +19,15 @@
   </div>
 
   <h1>💥 Comic Shop Curator 🗯</h1>
-  <p>Find and save the best local comic book shops near you.</p>
+  <p class="offline-warning">Shop Finder is currently down due to API architecture changes.</p>
+  
+  <p class="architectural-detail">
+    <strong>How it works (Phase 2):</strong> Right now, this page is offline while I transition the backend from a serverless monolith to a localized microservices stack. Previously, I was pulling location data through the Google Places API, which worked, but felt a bit bloated for what I needed. Now, I'm routing client requests through a Java (Spring Boot) gateway straight into a PostGIS spatial database running inside WSL. By seeding the database with local shop coordinates, I can use pure mathematical spatial indexing to calculate distances rather than relying on an expensive third-party API. It's a lot of plumbing to set up manually, but the lookup speeds are significantly faster.
+  </p>
 
   <div>
-    <button onclick="getLocation()">Find CB Shops Near Me</button>
-    <button onclick="showSaved()">Show Saved CB Shops</button>
+    <button onclick="getLocation()" disabled>Find CB Shops Near Me</button>
+    <button onclick="showSaved()" disabled>Show Saved CB Shops</button>
   </div>
 
   <div class="cards"></div>

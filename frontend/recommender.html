@@ -17,7 +17,10 @@
     <a href="about.html">About</a>
   </div>
   <h1>Recommender Page</h1>
-  <p>Recommender page is currently down due to API changes.</p>
-  <p><strong>How it works:</strong> I trained and applied the collaborative machine learning model to a large dataset of my own creation - some of it from UCSD's Goodread's Database, most of it webscraped from reviews off of Amazon, Barnes&Noble and other places. To use it, simply enter a genre, character, author or artist, and receive recommendations for their work from the algorithm!</p>
+  <p class="offline-warning">Recommender page is currently down due to API architecture changes.</p>
+  
+  <p class="architectural-detail">
+    <strong>How it works (Phase 2):</strong> I am currently rebuilding the ML pipeline from the ground up. The original iteration was a collaborative filtering model trained on a massive dataset I scraped from Goodreads and Amazon. The new architecture is built around compute optimization. I'm deploying a PyTorch vision model wrapped in a Python FastAPI endpoint. To keep things 'Green' and avoid burning through GPU cycles, I engineered a native C++ perceptual hashing (pHash) layer that acts as a bouncer. When you upload a comic cover, C++ hashes it instantly at the byte level and checks the PostgreSQL cache. If it's a known image, it skips the heavy Python inference entirely. Honestly, it's slightly overkill for a simple comic app, but it's a great sandbox for learning enterprise-grade efficiency.
+  </p>
 </body>
 </html>
