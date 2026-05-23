@@ -333,23 +333,22 @@ button:hover {
     object-fit: cover;
 }
 
-/* Background colors for the sub-pages */
+/* Lightened the blue background a couple of shades for better black-text contrast */
 .recommender-page, .finder-page, .about-page, .releases-page {
-    background-color: rgb(0, 162, 255); 
+    background-color: rgb(102, 190, 255); 
 }
 
 .finder-page button, .recommender-page button, .about-page button, .releases-page button {
     background-color: rgba(46, 59, 78, 0.9);
 }
 
-/* The corrected architectural text styling */
+
+/* Clean, solid black text. No outlines, no shadows. */
 .architectural-detail {
     color: black;
-    font-weight: bold;
-    /* Sub-pixel stroke for the thinnest possible crisp outline */
-    -webkit-text-stroke: 0.3px white;
-    /* Removed the bulky 1px shadow */
-    text-shadow: none; 
+    font-weight: 600; /* Keeping it slightly bolded so it doesn't get lost */
+    -webkit-text-stroke: 0;
+    text-shadow: none;
     font-size: 1.25rem;
     line-height: 1.6;
     margin: 20px auto;
